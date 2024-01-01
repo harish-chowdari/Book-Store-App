@@ -1,9 +1,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 const app = express()
 
+
 app.use(express.json())
+app.use(cors())
 
 mongoose.connect("mongodb+srv://harish:LDPasAv1fBvS38al@cluster0.qgm68yy.mongodb.net/?retryWrites=true&w=majority")
 
@@ -19,7 +22,7 @@ con.once("open", () => {
 
 
 const routerOpe = require("./routes/book-routes")
-app.use("/bookstore",routerOpe)
+app.use("/books",routerOpe)
 
 
 app.listen(6007,()=>{
